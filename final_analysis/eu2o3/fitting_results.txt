@@ -1,0 +1,43 @@
+Gaussian T(r) fit parameters — 20TeO₂-(30-x)ZnO-50B₂O₃-xEu₂O₃
+
+=== 2A (TZBEu - 0%) ===
+  B-O      center=1.2128 Å  amp=1.0673  width=0.2820
+  Zn-O     center=1.6730 Å  amp=0.9528  width=0.1709
+  Te-O     center=2.3000 Å  amp=3.4024  width=0.4000
+  Te-Te    center=3.8100 Å  amp=8.0435  width=0.4000
+
+=== 2B (TZBEu - 0.5%) ===
+  B-O      center=1.2000 Å  amp=1.2509  width=0.3490
+  Zn-O     center=1.7500 Å  amp=1.4502  width=0.2012
+  Te-O     center=2.0539 Å  amp=1.0066  width=0.1382
+  Eu-O     center=2.6000 Å  amp=3.1561  width=0.4000
+  Te-Te    center=3.8000 Å  amp=7.8020  width=0.4000
+
+=== 2C (TZBEu - 01%) ===
+  B-O      center=1.2015 Å  amp=1.2556  width=0.3329
+  Zn-O     center=1.7371 Å  amp=1.4777  width=0.2065
+  Te-O     center=2.0391 Å  amp=0.8919  width=0.1321
+  Eu-O     center=2.6000 Å  amp=3.4059  width=0.4000
+  Te-Te    center=3.8600 Å  amp=8.0201  width=0.4000
+
+=== 2D (TZBEu - 02%) ===
+  B-O      center=1.2100 Å  amp=1.1957  width=0.3444
+  Zn-O     center=1.7500 Å  amp=1.3882  width=0.1940
+  Te-O     center=2.0461 Å  amp=0.9851  width=0.1322
+  Eu-O     center=2.6000 Å  amp=3.5090  width=0.4000
+  Te-Te    center=3.9100 Å  amp=8.1311  width=0.4000
+
+=== 2E (TZBEu - 03%) ===
+  B-O      center=1.2500 Å  amp=1.2677  width=0.3732
+  Zn-O     center=1.8200 Å  amp=1.0984  width=0.1689
+  Te-O     center=2.0892 Å  amp=0.8331  width=0.1188
+  Eu-O     center=2.6000 Å  amp=3.7399  width=0.4000
+  Te-Te    center=3.9400 Å  amp=8.2786  width=0.4000
+
+=== 2F (TZBEu - 05%) ===
+  B-O      center=1.2500 Å  amp=1.3707  width=0.3329
+  Zn-O     center=1.7507 Å  amp=1.0978  width=0.1746
+  Te-O     center=2.0150 Å  amp=0.7027  width=0.1111
+  Eu-O     center=2.6000 Å  amp=4.0994  width=0.4000
+  Te-Te    center=4.0400 Å  amp=8.4653  width=0.4000
+

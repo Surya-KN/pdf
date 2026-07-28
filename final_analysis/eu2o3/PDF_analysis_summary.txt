@@ -1,0 +1,20 @@
+======================================================================
+PDF ANALYSIS SUMMARY — Eu SERIES
+Glass: 20TeO₂-(30-x)ZnO-50B₂O₃-xEu₂O₃
+Radiation: Cu Kα (λ=1.5406 Å), Qmax=5.1 Å⁻¹
+======================================================================
+
+NOTE: In X-ray g(r)/G(r) of TeO2 glasses the dominant peak is Te–Te
+(~3.5–3.8 Å). First-shell B-O/Zn-O/Te-O often stay below g(r)=1
+due to Faber–Ziman weighting and low Qmax resolution.
+
+Sample             % Te-Te(fit)  Te-Te(g(r))    Te-O-Te    N(Eu-O)
+2A               0.0      3.56        3.52     125.7         -
+2B               0.5      3.55        3.48     125.1      0.92
+2C               1.0      3.61        3.57     129.0      0.94
+2D               2.0      3.66        3.58     132.4      0.96
+2E               3.0      3.69        3.63     134.6      1.05
+2F               5.0      3.79        3.73     142.7      0.99
+
+Key finding: Te–Te peak shifts and Te–O–Te angle opens with
+increasing Eu₂O₃, indicating network modification.

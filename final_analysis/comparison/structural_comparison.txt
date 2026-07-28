@@ -1,0 +1,16 @@
+==============================================================================
+STRUCTURAL COMPARISON: Eu₂O₃ vs Er₂O₃ glass series
+20TeO₂-(30-x)ZnO-50B₂O₃-xRE₂O₃
+==============================================================================
+
+ mol%    Eu Te-Te   Er Te-Te    Eu Te-O-Te   Er Te-O-Te   N(Eu-O)  N(Er-O)
+  0.0        3.56       3.59         125.7        127.7         -        -
+  0.5        3.55       3.59         125.1        127.7      0.92     1.59
+  1.0        3.61       3.61         129.0        129.0      0.94     1.66
+  2.0        3.66       3.67         132.4        133.1      0.96     1.68
+  3.0        3.69       3.71         134.6        136.1      1.05     1.78
+  5.0        3.79       3.73         142.7        137.7      0.99     1.80
+
+Both RE³⁺ dopants open the Te–O–Te network angle and shift
+the Te–Te peak to longer distance with increasing concentration.
+Eu shows a larger Te–Te / angle shift at 5 mol% than Er.

@@ -1,0 +1,77 @@
+﻿# Python / venvs
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+pdfgetx3-env/
+pyvenv.cfg
+
+# This folder was a broken/partial venv at repo root — never commit
+Lib/
+Scripts/
+Include/
+share/
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Caches / tooling
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
+
+# Secrets
+.env
+.env.*
+!.env.example
+credentials.json
+*.pem
+secrets/
+
+# Cursor / agent internals
+.cursor/
+agent-transcripts/
+*.cursor*
+
+# Large / redundant archives and junk
+*.zip
+results.zip
+results/
+# keep results_v2/ and final_analysis/
+
+# Optional local scratch
+tmp/
+temp/
+
+# Root scratch / early experiments (not part of final_analysis package)
+/2A_*
+/2B_*
+/composition_comparison.png
+/PDF_Analysis_Report.pdf
+/T-*.md
+# Legacy one-off scripts at repo root (pipeline lives in final_analysis/scripts/)
+/analyze_q_range.py
+/check_tools.py
+/diagnose_gr.py
+/generate_report_pdf.py
+/plot_*.py
+/process_v2.py
+/_organize_write.py
