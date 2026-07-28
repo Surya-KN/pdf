@@ -11,9 +11,9 @@ pdfgetx3-env/
 pyvenv.cfg
 
 # This folder was a broken/partial venv at repo root — never commit
-Lib/
-Scripts/
-Include/
+/Lib/
+/Scripts/
+/Include/
 share/
 pip-wheel-metadata/
 *.egg-info/
@@ -75,3 +75,4 @@ temp/
 /plot_*.py
 /process_v2.py
 /_organize_write.py
+
