@@ -50,14 +50,10 @@ def comparison_Gr_waterfall(eu_data, er_data):
                 idx = np.argmin(np.abs(d["r"] - d["first_r"]))
                 ax.plot(d["first_r"], d["G"][idx] + off, "o",
                         color=colors[i], ms=4)
-                ax.annotate(f'1st {d["first_r"]:.2f}',
+                ax.annotate(f'{d["first_r"]:.2f} Å',
                             (d["first_r"], d["G"][idx] + off),
                             textcoords="offset points", xytext=(4, 3),
                             fontsize=7, color=colors[i])
-            if d["tete_Gr_r"] is not None:
-                idx = np.argmin(np.abs(d["r"] - d["tete_Gr_r"]))
-                ax.plot(d["tete_Gr_r"], d["G"][idx] + off, "s",
-                        color=colors[i], ms=3.5)
             extra = 0.3 if sid in U.EXTRA_OFFSET_SAMPLES else 0.0
             U.add_inline_label(ax, U.LABEL_X, off, d["info"]["label"],
                                colors[i], extra)

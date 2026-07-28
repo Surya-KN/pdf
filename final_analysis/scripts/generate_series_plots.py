@@ -115,22 +115,14 @@ def plot_01(cfg, data):
         ax = axes[i]
         d = data[sid]
         ax.plot(d["r"], d["G"], color=colors[i], lw=1.2)
-        # Mark FIRST shell peak (~1.9 Å), not Te–Te
+        # Mark first shell peak only (~1.9 Å)
         if d["first_r"] is not None:
             ax.plot(d["first_r"], d["first_G"], U.PEAK_MARKER,
                     color="red", ms=U.PEAK_MARKERSIZE, zorder=5)
-            ax.annotate(f'1st {d["first_r"]:.2f} Å',
+            ax.annotate(f'{d["first_r"]:.2f} Å',
                         (d["first_r"], d["first_G"]),
                         textcoords="offset points", xytext=(5, 8),
                         fontsize=U.PEAK_FONTSIZE, color="red")
-        # Te–Te labeled as second shell
-        if d["tete_Gr_r"] is not None:
-            ax.plot(d["tete_Gr_r"], d["tete_Gr"], "s",
-                    color="darkred", ms=4, zorder=5)
-            ax.annotate(f'Te–Te {d["tete_Gr_r"]:.2f} Å',
-                        (d["tete_Gr_r"], d["tete_Gr"]),
-                        textcoords="offset points", xytext=(5, -12),
-                        fontsize=8, color="darkred")
         ax.set_xlim(1, 11)
         ax.set_xlabel("r (Å)")
         ax.set_ylabel("G(r) (Å⁻²)")
@@ -160,24 +152,14 @@ def plot_03(cfg, data):
         off = i * U.WATERFALL_OFFSET_GR
         y = d["G"] + off
         ax.plot(d["r"], y, color=cfg["colors"][i], lw=1.2)
-        # First shell peak annotation (primary)
         if d["first_r"] is not None:
             idx = np.argmin(np.abs(d["r"] - d["first_r"]))
             ax.plot(d["first_r"], d["G"][idx] + off, U.PEAK_MARKER,
                     color=cfg["colors"][i], ms=U.PEAK_MARKERSIZE)
-            ax.annotate(f'1st {d["first_r"]:.2f} Å',
+            ax.annotate(f'{d["first_r"]:.2f} Å',
                         (d["first_r"], d["G"][idx] + off),
                         textcoords="offset points", xytext=(6, 4),
                         fontsize=U.PEAK_FONTSIZE, color=cfg["colors"][i])
-        # Te–Te second shell (smaller marker, explicit label)
-        if d["tete_Gr_r"] is not None:
-            idx = np.argmin(np.abs(d["r"] - d["tete_Gr_r"]))
-            ax.plot(d["tete_Gr_r"], d["G"][idx] + off, "s",
-                    color=cfg["colors"][i], ms=3.5, alpha=0.85)
-            ax.annotate(f'Te–Te {d["tete_Gr_r"]:.2f}',
-                        (d["tete_Gr_r"], d["G"][idx] + off),
-                        textcoords="offset points", xytext=(6, -10),
-                        fontsize=7, color=cfg["colors"][i], alpha=0.9)
         extra = 0.3 if sid in U.EXTRA_OFFSET_SAMPLES else 0.0
         U.add_inline_label(ax, U.LABEL_X, off, d["info"]["label"],
                            cfg["colors"][i], extra)
@@ -227,27 +209,18 @@ def plot_06(cfg, data):
         d = data[sid]
         ax.plot(d["r"], d["gr"], color=cfg["colors"][i], lw=1.2,
                 label=pct_label(d["info"], cfg["dopant_oxide"]))
-        # First shell (~1.9 Å) — the actual first peak
         if d["first_gr_r"] is not None:
             ax.axvline(d["first_gr_r"], color=cfg["colors"][i], ls="-", lw=0.8, alpha=0.45)
             ax.plot(d["first_gr_r"], d["first_gr"], U.PEAK_MARKER,
                     color=cfg["colors"][i], ms=U.PEAK_MARKERSIZE)
-            ax.annotate(f'1st {d["first_gr_r"]:.2f}',
+            ax.annotate(f'{d["first_gr_r"]:.2f}',
                         (d["first_gr_r"], d["first_gr"]),
-                        textcoords="offset points", xytext=(2, 4),
-                        fontsize=7, color=cfg["colors"][i])
-        # Te–Te second shell
-        if d["tete_r"] is not None:
-            ax.axvline(d["tete_r"], color=cfg["colors"][i], ls=":", lw=0.7, alpha=0.35)
-            ax.annotate(f'Te–Te {d["tete_r"]:.2f}',
-                        (d["tete_r"], d["tete_g"]),
                         textcoords="offset points", xytext=(2, 4),
                         fontsize=7, color=cfg["colors"][i])
     ax.set_xlim(1.0, 5.5)
     ax.set_xlabel("r (Å)")
     ax.set_ylabel("g(r)")
     ax.legend(loc="upper right", fontsize=9)
-    ax.set_title("First shell (~1.9 Å) and Te–Te second shell (~3.5 Å)")
     fig.tight_layout()
     U.savefig(fig, os.path.join(cfg["outdir"], "06_first_peak_zoom.png"))
 
@@ -724,9 +697,6 @@ def plot_25(cfg, data):
         if d["first_gr_r"] is not None:
             ax.plot(d["first_gr_r"], d["first_gr"], U.PEAK_MARKER,
                     color=cfg["colors"][i], ms=U.PEAK_MARKERSIZE)
-        if d["tete_r"] is not None:
-            ax.plot(d["tete_r"], d["tete_g"], "s",
-                    color=cfg["colors"][i], ms=4)
     ax.set_xlim(1, 11)
     ax.set_ylim(0.5, 2.0)
     ax.set_xlabel("r (Å)")
