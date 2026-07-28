@@ -81,8 +81,29 @@ def Gr_to_Tr(r, Gr, rho0):
     return Gr + 4 * np.pi * rho0 * r
 
 
-def find_Te_Te_peak(r, gr, search_min=2.5, search_max=5.0):
-    """Dominant Te-Te peak in g(r) for Cu Ka TeO2 glass X-ray PDF."""
+def find_first_shell_peak(r, y, search_min=1.2, search_max=2.6, prominence=0.01):
+    """First coordination-shell peak (cation–O / Te–O), typically ~1.9–2.2 Å.
+
+    This is the *first* structural peak. Do not confuse with the stronger
+    Te–Te peak near 3.5 Å (second shell in X-ray PDF of TeO2 glasses).
+    Works on G(r) or g(r); no height>1 requirement (first shell often <1 in g(r)).
+    """
+    mask = (r >= search_min) & (r <= search_max)
+    if not np.any(mask):
+        return None, None
+    r_range = r[mask]
+    y_range = np.nan_to_num(y[mask], nan=-np.inf)
+    peaks, props = find_peaks(y_range, prominence=prominence)
+    if len(peaks) > 0:
+        # true first peak = leftmost significant peak in the first-shell window
+        best = peaks[0]
+        return float(r_range[best]), float(y_range[best])
+    idx = int(np.argmax(y_range))
+    return float(r_range[idx]), float(y_range[idx])
+
+
+def find_Te_Te_peak(r, gr, search_min=2.8, search_max=5.0):
+    """Second-shell Te–Te peak in g(r) (~3.5–3.8 Å). Dominant in intensity, not first."""
     mask = (r >= search_min) & (r <= search_max)
     if not np.any(mask):
         return None, None
@@ -92,13 +113,12 @@ def find_Te_Te_peak(r, gr, search_min=2.5, search_max=5.0):
     if len(peaks) > 0:
         best = peaks[np.argmax(props["prominences"])]
         return float(r_range[best]), float(gr_clean[best])
-    # fallback: max in window
     idx = int(np.nanargmax(gr_clean))
     return float(r_range[idx]), float(gr_clean[idx])
 
 
-def find_Te_Te_peak_Gr(r, Gr, search_min=2.5, search_max=5.0):
-    """Find Te-Te peak directly on G(r) (absolute max in window)."""
+def find_Te_Te_peak_Gr(r, Gr, search_min=2.8, search_max=5.0):
+    """Second-shell Te–Te peak on G(r) (~3.5–3.8 Å)."""
     mask = (r >= search_min) & (r <= search_max)
     if not np.any(mask):
         return None, None

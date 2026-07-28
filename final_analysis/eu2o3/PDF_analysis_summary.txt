@@ -4,17 +4,18 @@ Glass: 20TeO₂-(30-x)ZnO-50B₂O₃-xEu₂O₃
 Radiation: Cu Kα (λ=1.5406 Å), Qmax=5.1 Å⁻¹
 ======================================================================
 
-NOTE: In X-ray g(r)/G(r) of TeO2 glasses the dominant peak is Te–Te
-(~3.5–3.8 Å). First-shell B-O/Zn-O/Te-O often stay below g(r)=1
-due to Faber–Ziman weighting and low Qmax resolution.
+NOTE: First structural peak is the cation–O / Te–O shell (~1.9–2.2 Å).
+The stronger Te–Te peak (~3.5–3.8 Å) is the *second* shell in G(r)/g(r);
+it dominates X-ray intensity (Z² weighting) but must not be labeled as first.
+First-shell g(r) often stays near/below 1 at lab Qmax≈5.1 Å⁻¹.
 
-Sample             % Te-Te(fit)  Te-Te(g(r))    Te-O-Te    N(Eu-O)
-2A               0.0      3.56        3.52     125.7         -
-2B               0.5      3.55        3.48     125.1      0.92
-2C               1.0      3.61        3.57     129.0      0.94
-2D               2.0      3.66        3.58     132.4      0.96
-2E               3.0      3.69        3.63     134.6      1.05
-2F               5.0      3.79        3.73     142.7      0.99
+Sample             %    1st r   Te-Te(g) Te-Te(fit)    Te-O-Te    N(Eu-O)
+2A               0.0    1.90      3.52      3.56     125.7         -
+2B               0.5    1.95      3.48      3.55     125.1      0.92
+2C               1.0    1.92      3.57      3.61     129.0      0.94
+2D               2.0    2.00      3.58      3.66     132.4      0.96
+2E               3.0    2.16      3.63      3.69     134.6      1.05
+2F               5.0    2.14      3.73      3.79     142.7      0.99
 
-Key finding: Te–Te peak shifts and Te–O–Te angle opens with
+Key finding: Te–Te (2nd shell) shifts and Te–O–Te angle opens with
 increasing Eu₂O₃, indicating network modification.

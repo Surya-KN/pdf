@@ -22,10 +22,14 @@ def load_gr_series(samples_dict, out_override=None):
         arr = U.parse_gr(path)
         r, G = arr[:, 0], arr[:, 1]
         gr = U.Gr_to_gr(r, G, info["rho0"])
+        first_r, first_G = U.find_first_shell_peak(r, G)
+        first_gr_r, first_gr = U.find_first_shell_peak(r, gr)
         tete_r, tete_g = U.find_Te_Te_peak(r, gr)
         tete_Gr_r, tete_Gr = U.find_Te_Te_peak_Gr(r, G)
         data[sid] = {
             "r": r, "G": G, "gr": gr,
+            "first_r": first_r, "first_G": first_G,
+            "first_gr_r": first_gr_r, "first_gr": first_gr,
             "tete_r": tete_r, "tete_g": tete_g,
             "tete_Gr_r": tete_Gr_r, "tete_Gr": tete_Gr,
             "info": info,
@@ -42,10 +46,18 @@ def comparison_Gr_waterfall(eu_data, er_data):
         for i, (sid, d) in enumerate(data.items()):
             off = i * U.WATERFALL_OFFSET_GR
             ax.plot(d["r"], d["G"] + off, color=colors[i], lw=1.2)
+            if d["first_r"] is not None:
+                idx = np.argmin(np.abs(d["r"] - d["first_r"]))
+                ax.plot(d["first_r"], d["G"][idx] + off, "o",
+                        color=colors[i], ms=4)
+                ax.annotate(f'1st {d["first_r"]:.2f}',
+                            (d["first_r"], d["G"][idx] + off),
+                            textcoords="offset points", xytext=(4, 3),
+                            fontsize=7, color=colors[i])
             if d["tete_Gr_r"] is not None:
                 idx = np.argmin(np.abs(d["r"] - d["tete_Gr_r"]))
-                ax.plot(d["tete_Gr_r"], d["G"][idx] + off, "o",
-                        color=colors[i], ms=4)
+                ax.plot(d["tete_Gr_r"], d["G"][idx] + off, "s",
+                        color=colors[i], ms=3.5)
             extra = 0.3 if sid in U.EXTRA_OFFSET_SAMPLES else 0.0
             U.add_inline_label(ax, U.LABEL_X, off, d["info"]["label"],
                                colors[i], extra)
