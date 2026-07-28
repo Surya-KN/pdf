@@ -39,19 +39,21 @@ def load_gr_series(samples_dict, out_override=None):
 
 def comparison_Gr_waterfall(eu_data, er_data):
     fig, axes = plt.subplots(1, 2, figsize=(16, 8), sharey=True)
+    scale = U.WATERFALL_SCALE_GR
     for ax, data, colors, title in [
         (axes[0], eu_data, EU_COLORS, "Eu₂O₃ series"),
         (axes[1], er_data, ER_COLORS, "Er₂O₃ series"),
     ]:
         for i, (sid, d) in enumerate(data.items()):
             off = i * U.WATERFALL_OFFSET_GR
-            ax.plot(d["r"], d["G"] + off, color=colors[i], lw=1.2)
+            ax.plot(d["r"], scale * d["G"] + off, color=colors[i], lw=1.3)
             if d["first_r"] is not None:
                 idx = np.argmin(np.abs(d["r"] - d["first_r"]))
-                ax.plot(d["first_r"], d["G"][idx] + off, "o",
+                ypk = scale * d["G"][idx] + off
+                ax.plot(d["first_r"], ypk, "o",
                         color=colors[i], ms=U.PEAK_MARKERSIZE, zorder=5)
                 ax.annotate(f'{d["first_r"]:.2f} Å',
-                            (d["first_r"], d["G"][idx] + off),
+                            (d["first_r"], ypk),
                             textcoords="offset points", xytext=(4, 3),
                             fontsize=U.PEAK_FONTSIZE, color=colors[i])
             extra = 0.3 if sid in U.EXTRA_OFFSET_SAMPLES else 0.0

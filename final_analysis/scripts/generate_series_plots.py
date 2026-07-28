@@ -139,18 +139,20 @@ def plot_02(cfg, data):
 
 def plot_03(cfg, data):
     fig, ax = plt.subplots(figsize=(10, 8))
+    scale = U.WATERFALL_SCALE_GR
     for i, sid in enumerate(cfg["keys"]):
         d = data[sid]
         off = i * U.WATERFALL_OFFSET_GR
-        y = d["G"] + off
-        ax.plot(d["r"], y, color=cfg["colors"][i], lw=1.2)
+        y = scale * d["G"] + off
+        ax.plot(d["r"], y, color=cfg["colors"][i], lw=1.3)
         # Mark proper first peak (cation–O / Te–O ~1.9–2.2 Å), not Te–Te
         if d["first_r"] is not None:
             idx = np.argmin(np.abs(d["r"] - d["first_r"]))
-            ax.plot(d["first_r"], d["G"][idx] + off, U.PEAK_MARKER,
+            ypk = scale * d["G"][idx] + off
+            ax.plot(d["first_r"], ypk, U.PEAK_MARKER,
                     color=cfg["colors"][i], ms=U.PEAK_MARKERSIZE, zorder=5)
             ax.annotate(f'{d["first_r"]:.2f} Å',
-                        (d["first_r"], d["G"][idx] + off),
+                        (d["first_r"], ypk),
                         textcoords="offset points", xytext=(6, 4),
                         fontsize=U.PEAK_FONTSIZE, color=cfg["colors"][i])
         extra = 0.3 if sid in U.EXTRA_OFFSET_SAMPLES else 0.0

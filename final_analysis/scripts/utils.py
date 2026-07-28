@@ -6,7 +6,8 @@ from scipy.optimize import curve_fit
 
 DPI = 300
 BBOX = "tight"
-WATERFALL_OFFSET_GR = 2.5
+WATERFALL_OFFSET_GR = 4.0      # spacing between stacked G(r) curves
+WATERFALL_SCALE_GR = 2.5       # vertical amplify so first/main peaks read clearer
 WATERFALL_OFFSET_gr = 1.2
 WATERFALL_OFFSET_DIFF = 1.5
 WATERFALL_OFFSET_FQ = 2.0
