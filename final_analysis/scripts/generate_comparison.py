@@ -46,6 +46,14 @@ def comparison_Gr_waterfall(eu_data, er_data):
         for i, (sid, d) in enumerate(data.items()):
             off = i * U.WATERFALL_OFFSET_GR
             ax.plot(d["r"], d["G"] + off, color=colors[i], lw=1.2)
+            if d["first_r"] is not None:
+                idx = np.argmin(np.abs(d["r"] - d["first_r"]))
+                ax.plot(d["first_r"], d["G"][idx] + off, "o",
+                        color=colors[i], ms=U.PEAK_MARKERSIZE, zorder=5)
+                ax.annotate(f'{d["first_r"]:.2f} Å',
+                            (d["first_r"], d["G"][idx] + off),
+                            textcoords="offset points", xytext=(4, 3),
+                            fontsize=U.PEAK_FONTSIZE, color=colors[i])
             extra = 0.3 if sid in U.EXTRA_OFFSET_SAMPLES else 0.0
             U.add_inline_label(ax, U.LABEL_X, off, d["info"]["label"],
                                colors[i], extra)
